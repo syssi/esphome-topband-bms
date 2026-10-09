@@ -9,9 +9,14 @@
 #define ADDR_STR(x) (x).c_str()
 #endif
 
+// Fallback for ESPHome < 2026.10.0
+#ifndef ESPHOME_LOG_TAG
+#define ESPHOME_LOG_TAG(name, tag) static const char *const name = tag
+#endif
+
 namespace esphome::topband_bms_v1_ble {
 
-static const char *const TAG = "topband_bms_v1_ble";
+ESPHOME_LOG_TAG(TAG, "topband_bms_v1_ble");
 
 static const uint8_t ERRORS_SIZE = 16;
 static constexpr const char *const ERRORS[ERRORS_SIZE] = {
