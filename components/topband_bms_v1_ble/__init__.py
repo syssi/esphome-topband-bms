@@ -4,6 +4,7 @@ import esphome.config_validation as cv
 from esphome.const import CONF_ID
 
 CODEOWNERS = ["@syssi"]
+DOMAIN = "topband_bms_v1_ble"
 
 DEPENDENCIES = ["ble_client"]
 AUTO_LOAD = ["binary_sensor", "sensor", "text_sensor"]
