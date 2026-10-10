@@ -1,13 +1,6 @@
 #include "topband_bms_v1_ble.h"
 #include "esphome/core/log.h"
 #include "esphome/core/helpers.h"
-#include "esphome/core/version.h"
-
-#if ESPHOME_VERSION_CODE >= VERSION_CODE(2025, 12, 0)
-#define ADDR_STR(x) x
-#else
-#define ADDR_STR(x) (x).c_str()
-#endif
 
 // Fallback for ESPHome < 2026.10.0
 #ifndef ESPHOME_LOG_TAG
@@ -72,8 +65,7 @@ void TopbandBmsV1Ble::gattc_event_handler(esp_gattc_cb_event_t event, esp_gatt_i
     case ESP_GATTC_SEARCH_CMPL_EVT: {
       auto *chr = this->parent_->get_characteristic(SERVICE_UUID, NOTIFY_UUID);
       if (chr == nullptr) {
-        ESP_LOGE(TAG, "[%s] No notify characteristic found - not a Topband v1 BMS?",
-                 ADDR_STR(this->parent_->address_str()));
+        ESP_LOGE(TAG, "[%s] No notify characteristic found - not a Topband v1 BMS?", this->parent_->address_str());
         break;
       }
       this->char_notify_handle_ = chr->handle;

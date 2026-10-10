@@ -28,7 +28,7 @@ Not yet implemented.
 
 ## Requirements
 
-* [ESPHome 2024.12.0 or higher](https://github.com/esphome/esphome/releases)
+* [ESPHome 2025.12.0 or higher](https://github.com/esphome/esphome/releases)
 * Generic ESP32 board
 
 ## Installation
