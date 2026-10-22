@@ -1,16 +1,12 @@
 """Schema structure tests for topband_bms_v1_ble ESPHome component modules."""
 
-import os
+from pathlib import Path
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import components.topband_bms_v1_ble as hub  # noqa: E402
-from components.topband_bms_v1_ble import (  # noqa: E402
-    binary_sensor,
-    sensor,
-    text_sensor,
-)
+from components.topband_bms_v1_ble import binary_sensor, sensor, text_sensor  # noqa: E402
 
 
 class TestHubConstants:
