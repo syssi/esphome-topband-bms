@@ -312,6 +312,18 @@ void TopbandBmsV1Ble::reset_online_status_tracker_() {
 
 void TopbandBmsV1Ble::publish_device_unavailable_() {
   this->publish_state_(this->online_status_binary_sensor_, false);
+
+  this->invalidate_binary_sensor_(this->charging_binary_sensor_);
+  this->invalidate_binary_sensor_(this->discharging_binary_sensor_);
+  this->invalidate_binary_sensor_(this->charge_overtemperature_protection_binary_sensor_);
+  this->invalidate_binary_sensor_(this->discharge_overtemperature_protection_binary_sensor_);
+  this->invalidate_binary_sensor_(this->charge_undertemperature_protection_binary_sensor_);
+  this->invalidate_binary_sensor_(this->discharge_undertemperature_protection_binary_sensor_);
+  this->invalidate_binary_sensor_(this->discharge_overcurrent_protection_binary_sensor_);
+  this->invalidate_binary_sensor_(this->charge_overcurrent_protection_binary_sensor_);
+  this->invalidate_binary_sensor_(this->undervoltage_protection_binary_sensor_);
+  this->invalidate_binary_sensor_(this->overvoltage_protection_binary_sensor_);
+
   this->publish_state_(this->total_voltage_sensor_, NAN);
   this->publish_state_(this->current_sensor_, NAN);
   this->publish_state_(this->power_sensor_, NAN);
@@ -336,6 +348,11 @@ void TopbandBmsV1Ble::publish_device_unavailable_() {
 void TopbandBmsV1Ble::publish_state_(binary_sensor::BinarySensor *s, bool state) {
   if (s != nullptr)
     s->publish_state(state);
+}
+
+void TopbandBmsV1Ble::invalidate_binary_sensor_(binary_sensor::BinarySensor *s) {
+  if (s != nullptr)
+    s->invalidate_state();
 }
 
 void TopbandBmsV1Ble::publish_state_(sensor::Sensor *s, float value) {
