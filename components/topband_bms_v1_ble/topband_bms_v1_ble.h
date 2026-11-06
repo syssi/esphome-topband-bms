@@ -132,6 +132,7 @@ class TopbandBmsV1Ble :
   void update_cell_stats_(const float *voltages, uint8_t count);
 
   void publish_state_(binary_sensor::BinarySensor *s, bool state);
+  void invalidate_binary_sensor_(binary_sensor::BinarySensor *s);
   void publish_state_(sensor::Sensor *s, float value);
   void publish_state_(text_sensor::TextSensor *s, const std::string &state);
   void publish_device_unavailable_();
