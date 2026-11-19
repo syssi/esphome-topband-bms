@@ -1,6 +1,5 @@
 #include "topband_bms_v1_ble.h"
 #include "esphome/core/log.h"
-#include "esphome/core/helpers.h"
 
 // Fallback for ESPHome < 2026.10.0
 #ifndef ESPHOME_LOG_TAG
